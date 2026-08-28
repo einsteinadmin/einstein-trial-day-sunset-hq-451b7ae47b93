@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Trial Day Sunset · Project HQ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Bebas+Neue&display=swap');
+
+  :root {
+    --orange: #EF8B22;
+    --blue:   #0979C3;
+    --navy:   #1B3A5C;
+    --ink:    #2A2A2A;
+    --gray:   #6B6B6B;
+    --light:  #F7F5F1;
+    --line:   #E5E1DA;
+    --teal:   #0E8F84;
+    --red:    #C0392B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Roboto', -apple-system, sans-serif;
+    background: var(--light);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 56px 36px 100px; }
+
+  .eyebrow {
+    font-size: .72rem; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 3.4rem; line-height: 1;
+    letter-spacing: 1px; color: var(--navy); margin-bottom: 12px;
+  }
+  .lede { font-size: 1.05rem; color: var(--gray); max-width: 760px; }
+  .meta { font-size: .78rem; color: #999; margin-top: 12px; }
+  .header-links { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .header-links a {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--navy); color: #fff; text-decoration: none;
+    font-size: .82rem; font-weight: 700; padding: 9px 18px;
+    border-radius: 8px; letter-spacing: .3px;
+  }
+  .header-links a.primary { background: var(--orange); }
+
+  .feature {
+    margin-top: 36px; background: #fff; border: 1px solid var(--line);
+    border-left: 4px solid var(--orange); border-radius: 12px; padding: 26px 28px;
+  }
+  .feature .ft-eyebrow {
+    font-size: .68rem; font-weight: 800; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+  }
+  .feature h2 { font-size: 1.35rem; color: var(--navy); margin-bottom: 10px; }
+  .feature p { font-size: .95rem; color: var(--gray); margin-bottom: 14px; }
+  .stat-row { display: flex; gap: 34px; flex-wrap: wrap; margin: 18px 0 6px; }
+  .stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--navy); line-height: 1; }
+  .stat-label { font-size: .74rem; color: var(--gray); margin-top: 4px; max-width: 160px; }
+
+  .section-head { margin-top: 64px; margin-bottom: 24px; }
+  .section-head h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.1rem; letter-spacing: .5px; color: var(--navy); }
+  .section-head p { font-size: .92rem; color: var(--gray); max-width: 720px; margin-top: 6px; }
+
+  .phases { display: flex; flex-direction: column; gap: 14px; }
+  .phase {
+    display: flex; gap: 20px; background: #fff; border: 1px solid var(--line);
+    border-radius: 12px; padding: 22px 24px;
+  }
+  .ph-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; color: var(--line);
+    min-width: 44px; line-height: 1;
+  }
+  .phase h3 { font-size: 1.02rem; color: var(--navy); margin-bottom: 6px; }
+  .phase p { font-size: .88rem; color: var(--gray); }
+  .ph-status {
+    display: inline-block; font-size: .64rem; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-left: 8px;
+    vertical-align: 2px; background: #eee; color: var(--gray);
+  }
+  .phase.done   { border-left: 4px solid var(--teal); }
+  .phase.done .ph-status { background: #E2F3F1; color: var(--teal); }
+  .phase.now    { border-left: 4px solid var(--orange); }
+  .phase.now .ph-status  { background: #FDEEDC; color: var(--orange); }
+  .phase.next   { border-left: 4px solid var(--line); opacity: .85; }
+  .item-list { margin-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .item { font-size: .85rem; color: var(--ink); padding-left: 22px; position: relative; }
+  .item::before { content: '○'; position: absolute; left: 0; color: var(--gray); }
+  .item.done::before { content: '●'; color: var(--teal); }
+  .item .added { font-size: .72rem; color: var(--orange); font-weight: 700; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; }
+  .card-icon { font-size: 1.4rem; margin-bottom: 10px; }
+  .card h3 { font-size: .98rem; color: var(--navy); margin-bottom: 6px; }
+  .card p { font-size: .84rem; color: var(--gray); margin-bottom: 10px; }
+  .card-links { display: flex; flex-direction: column; gap: 4px; }
+  .card-links a { font-size: .82rem; color: var(--blue); text-decoration: none; font-weight: 500; }
+  .card-links a:hover { text-decoration: underline; }
+  .card-links .muted { font-size: .76rem; color: #999; }
+
+  .changelog { display: flex; flex-direction: column; gap: 0; }
+  .log-entry {
+    display: flex; gap: 20px; padding: 16px 4px; border-bottom: 1px solid var(--line);
+  }
+  .log-date {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: var(--orange);
+    min-width: 92px; letter-spacing: .5px; padding-top: 2px;
+  }
+  .log-body { font-size: .88rem; color: var(--ink); }
+  .log-body .next { color: var(--gray); font-size: .82rem; display: block; margin-top: 3px; }
+
+  .q-owner {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: .5px;
+    color: var(--blue); margin: 30px 0 12px;
+  }
+  .q-owner:first-of-type { margin-top: 0; }
+  .q-list { display: flex; flex-direction: column; gap: 12px; }
+  .q-item { display: flex; gap: 16px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+  .q-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--orange);
+    min-width: 28px; line-height: 1.2;
+  }
+  .q-text { font-size: .88rem; color: var(--ink); }
+
+  footer { margin-top: 80px; font-size: .74rem; color: #999; border-top: 1px solid var(--line); padding-top: 18px; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 36px 20px 70px; }
+    h1 { font-size: 2.4rem; }
+    .phase, .q-item, .log-entry { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Employee Experience · Project HQ</div>
+  <h1>Trial Day Sunset</h1>
+  <p class="lede">
+    Trial days are being retired — replaced by a culture interview, a mover-specific competency interview,
+    a Human Potential Evaluation built with Concentra, and a 2-month Extended Trial Period with staged
+    check-ins at weeks 1, 2, 4, and 8. The old process ran on an untrained crew's subjective gut call as a
+    1099-blurred field day, cost roughly $60K a quarter unbilled, and never actually tested for what the
+    mover job requires. This page merges Anne's leadership-facing case for the change with Brian's
+    step-by-step gap analysis into one shared reference — what's decided, what's still open, and what it
+    actually takes to flip the switch.
+  </p>
+  <p class="meta">Process owner: Anne Bosse · Regional ops: Brian Herzig · Also: Cameron Brown, Mike Vandenbroader · Built with: Linda (Anne's AI Chief of Staff) · Started: ~July 2026 · Workspace: einsteinadmin/cos-anne</p>
+
+  <div class="header-links">
+    <a class="primary" href="https://bherz303.github.io/einstein-sunset-hq-c7c196e80f90/">Brian's 55-step gap analysis →</a>
+    <a href="https://claude.ai/code/artifact/1aa38c25-d877-4f8e-b5d4-190033fc94ee">Leadership comparison page →</a>
+  </div>
+
+  <div class="feature">
+    <div class="ft-eyebrow">Where it stands today</div>
+    <h2>Aug 31 is dead. The real gap is smaller than it looked — 12 open items, not 31.</h2>
+    <p>
+      Brian's original gap analysis (8/27) tagged 31 of the pipeline's 55 steps as needing a decision or
+      still unbuilt. Anne ran a correction pass against two live Monday pulses (the Concentra HPE build
+      and the Trial Day Elimination Phase 1 thread) and found the picture was stale in a lot of places —
+      the HPE is actually built, tested, and location-confirmed since June; the culture and competency
+      interviews are already programmed into ClearCompany; the check-in reminder automation has existed
+      since July. <b>17 of Brian's 31 flagged steps flip to Works, 1 wasn't a real gap at all, and 1
+      reframes from "undecided" to "needs to be written down."</b> That leaves 12 steps genuinely open —
+      see corrected Open Questions below. Cameron killed the Aug 31 sunset date on 8/27 regardless, since
+      even the corrected 12-item list still needs two working sessions before a new date locks:
+      <b>Anne + Brian</b> (async, on Brian's gap doc) and a separate <b>Mike + Brian + Cameron</b> session
+      to reconcile Mike's belief that branches are already ready to sunset against Brian's findings that
+      they aren't.
+    </p>
+    <div class="stat-row">
+      <div><div class="stat-val">55</div><div class="stat-label">total steps end-to-end, not the ~10 usually described</div></div>
+      <div><div class="stat-val">12</div><div class="stat-label">steps genuinely still open, corrected down from Brian's 31</div></div>
+      <div><div class="stat-val">17</div><div class="stat-label">steps Brian flagged that are actually already built/decided</div></div>
+      <div><div class="stat-val">~9/21</div><div class="stat-label">new soft target date — not locked</div></div>
+    </div>
+  </div>
+
+
+  <div class="section-head">
+    <div class="eyebrow">Progression</div>
+    <h2>The roadmap</h2>
+    <p>Where this project has been, where it is now, and what comes next.</p>
+  </div>
+
+  <div class="phases">
+
+    <div class="phase done">
+      <div class="ph-num">01</div>
+      <div>
+        <h3>Diagnose + design <span class="ph-status">Done</span></h3>
+        <p>The case got built and the replacement process got designed: culture interview → competency interview → Human Potential Evaluation → Extended Trial Period with staged check-ins.</p>
+        <div class="item-list">
+          <div class="item done">Turnover case built + leadership comparison page — 82% trailing-12mo mover turnover, $60K/quarter unbilled trial-day cost (Anne, 8/21)</div>
+          <div class="item done">New Hire Evaluation Process doc drafted (Anne, 8/21)</div>
+          <div class="item done">Mover Competency in-person interview guide finalized + walked through live with Cameron — no notes on the culture-interview doc itself (8/26–8/27)</div>
+          <div class="item done">Culture interview beta-tested at Fort Worth + Leander</div>
+          <div class="item done">Employee pulses retired across the five branch boards <span class="added">(added 8/27)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase now">
+      <div class="ph-num">02</div>
+      <div>
+        <h3>Gap analysis + decision backlog <span class="ph-status">Now</span></h3>
+        <p>Brian's step-by-step breakdown surfaced the real scope, but was working from a stale picture in several places. Anne ran a correction pass 8/28 against two live Monday pulses — this is the corrected working backlog. See Open Questions below for the full corrected list by owner.</p>
+        <div class="item-list">
+          <div class="item done">55-step breakdown built, tagged Works / Decide / Missing (Brian, 8/27)</div>
+          <div class="item done">Aug 31 date formally killed (Cameron, 8/27)</div>
+          <div class="item done">Correction pass run against two live pulses — HPE build/coverage, culture + competency interviews already in ClearCompany, check-in automation, onboarding sequencing all corrected to Works <span class="added">(added 8/28)</span></div>
+          <div class="item">SLA socialization to all 10 BMs — targeted for the start of next month</div>
+          <div class="item">First-shift structure (steps 26–28) — needs Mike + Brian's call, plus branch leadership buy-in on an outline scaled by branch size</div>
+          <div class="item">Can check-in halves (mover + manager) be completed separately, by two people, at two times? — routes to Matisen</div>
+          <div class="item">Mixed-signals judgment framework exists in practice but isn't written down anywhere <span class="added">(reframed 8/28 — not an open decision, a documentation gap)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase next">
+      <div class="ph-num">03</div>
+      <div>
+        <h3>Working sessions to close the gap <span class="ph-status">Next</span></h3>
+        <p>Gated on two sessions before a new date locks — Anne + Brian on the gap doc, and Mike + Brian + Cameron on branch-readiness assumptions.</p>
+      </div>
+    </div>
+
+    <div class="phase next">
+      <div class="ph-num">04</div>
+      <div>
+        <h3>Pilot + rollout <span class="ph-status">Next</span></h3>
+        <p>One branch, one hire, end to end — before the other nine branches hire under the new process. Brian's candidate: Leander (Frank + Garrison already ran the culture interview there).</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="section-head">
+    <div class="eyebrow">Deliverables</div>
+    <h2>Everything this project has produced</h2>
+    <p>Every doc, tool, and spec — one card each, linked at the source.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Leadership Comparison Page</h3>
+      <p>Current state vs. future state, side by side — the case for why this is changing, turnover data and all.</p>
+      <div class="card-links">
+        <a href="https://claude.ai/code/artifact/1aa38c25-d877-4f8e-b5d4-190033fc94ee">Open →</a>
+        <span class="muted">Built by Anne · claude.ai artifact, shared org-wide</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🗺️</div>
+      <h3>55-Step Gap Analysis</h3>
+      <p>The full process decomposed into every real step, tagged Works / Decide / Missing, with owners and action items.</p>
+      <div class="card-links">
+        <a href="https://bherz303.github.io/einstein-sunset-hq-c7c196e80f90/">Open →</a>
+        <span class="muted">Built by Brian (with Vera)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📄</div>
+      <h3>New Hire Evaluation Process</h3>
+      <p>Full process detail, open items, and build-status table behind the new pipeline.</p>
+      <div class="card-links">
+        <span class="muted">In repo: new-hire-evaluation-process-2026-08-21.docx</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📄</div>
+      <h3>Recruiting SLA Framework</h3>
+      <p>SLA targets and breach thresholds behind every stage's turnaround time — the forcing function on the whole pipeline.</p>
+      <div class="card-links">
+        <span class="muted">Built by Jalissa · in repo: jalissa-recruiting-sla-framework-2026-07-30.md</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📘</div>
+      <h3>Mover Competency Interview Guide</h3>
+      <p>The in-person competency interview guide — career-changer-friendly alternatives, 8th-grade-readability rewrite, corrected scoring rubric.</p>
+      <div class="card-links">
+        <span class="muted">Built by Anne · walked through live with Cameron 8/27 — not yet centralized here, ask Anne for the current file</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📘</div>
+      <h3>Mover Hire Playbook <em>(in progress)</em></h3>
+      <p>What a manager does from offer accepted through day 60 — every block tagged Policy, Proposed, or Not live.</p>
+      <div class="card-links">
+        <span class="muted">Being built by Brian · holds until the day-one sequence is signed off · not yet linked</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📘</div>
+      <h3>Day One Readiness, Running the 60 Days, Trial Day Talking Points <em>(in progress)</em></h3>
+      <p>Three companion docs from Brian's gap analysis — a 12-stage evidence trace for Anne/Cameron, a run-of-show for Brian as RM, and internal-only talking points.</p>
+      <div class="card-links">
+        <span class="muted">Referenced in Brian's HQ · not yet centralized here</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <h3>Correction-pass source pulses</h3>
+      <p>The two Monday threads behind the 8/28 correction pass — HPE build/location history and the Trial Day Elimination Phase 1 automation history.</p>
+      <div class="card-links">
+        <a href="https://einsteinmoving.monday.com/boards/1146915251/views/158206279/pulses/11289643278">Concentra HPE Project →</a>
+        <a href="https://einsteinmoving.monday.com/boards/1146915251/views/158206279/pulses/12161615742">Trial Day Elimination Phase 1 →</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="section-head">
+    <div class="eyebrow">Running log</div>
+    <h2>Changelog</h2>
+    <p>One dated entry per working session — what changed, what's next. Newest first.</p>
+  </div>
+
+  <div class="changelog">
+
+    <div class="log-entry">
+      <div class="log-date">8/28/2026 (pm)</div>
+      <div class="log-body">
+        Anne ran a full correction pass against Brian's 31 flagged steps, checked against two live
+        Monday pulses (Concentra HPE Project, Trial Day Elimination Phase 1) plus direct knowledge of
+        what's already built. Result: 17 steps flip to Works, 1 (termination authority when the BM is
+        out) wasn't a real gap, 1 (mixed-signals judgment) reframes from "undecided" to "needs to be
+        written down" — leaving 12 steps genuinely open, corrected list now in Open Questions below.
+        Linda drafted a message for Anne to send Brian directly so he can correct his own HQ copy.
+        <span class="next">Next: send the correction to Brian; SLA socialization to all 10 BMs, targeted for start of next month.</span>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-date">8/28/2026 (am)</div>
+      <div class="log-body">
+        Linda built this combined HQ, merging Anne's leadership-facing comparison page with Brian's
+        55-step gap analysis into one shared reference for Anne, Brian, Mike, and Cameron.
+        <span class="next">Next: correction pass against Brian's flagged steps (see below).</span>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-date">8/27/2026</div>
+      <div class="log-body">
+        Cameron formally killed the Aug 31 sunset date in the Roundtable huddle + Anne's 1:1, once
+        Brian's gap analysis (with Vera) surfaced ~55 real steps with 20 undecided and 11 unbuilt. New
+        soft target ~Sept 21, pending the two working sessions above. Mover Competency in-person
+        interview guide walked through live with Cameron — no notes on the culture-interview doc itself.
+        Employee pulses retired across the five branch boards (Chris told first; South Austin actually
+        used them).
+        <span class="next">Next: schedule both working sessions.</span>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-date">8/26/2026</div>
+      <div class="log-body">
+        Training app went live. HPE reframed from "not activated" to "per-branch coverage unverified" —
+        the real risk is whether each branch's Concentra actually has the custom protocol loaded, not the
+        on/off switch. Culture interview beta-tested at Fort Worth and Leander — both still ran a trial
+        day alongside it, so the new process has zero operational miles running standalone anywhere in
+        the company yet.
+        <span class="next">Next: branch-by-branch HPE coverage table.</span>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-date">8/21/2026</div>
+      <div class="log-body">
+        New Hire Evaluation Process doc drafted (Anne); turnover figures re-pulled directly from
+        Rippling, scoped to the Movers department, cross-checked against a title-based definition.
+        <span class="next">Next: leadership comparison page.</span>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="section-head">
+    <div class="eyebrow">Decision needed — corrected 8/28</div>
+    <h2>Open questions, by owner</h2>
+    <p>Brian's original gap analysis (8/27) flagged 20 decision items here. Anne ran a correction pass against two live Monday pulses and direct knowledge of what's already built — this is the corrected list.</p>
+  </div>
+
+  <div class="callout-line" style="margin-bottom:32px; background:#fff; border-radius:12px; padding:20px 22px;">
+    <strong style="color:var(--navy);">Resolved since Brian's HQ (no longer open):</strong> the clearance gate — a clear policy already exists (nothing employment-related happens until background, drug screen, and HPE all clear) and a working ClearCompany→Rippling mechanism already carries it (Matisen) · HPE branch coverage — protocol built and validated with Concentra since March, locations confirmed and equipped since June · competency-interview scoring + the culture interview — both already reviewed by Cameron, reworked, and programmed into ClearCompany by Jalissa (a doc-sync pass is still pending, not a structural gap) · check-in conversation deadlines — the mover app already has specific flags at weeks 1/2/4/8 outlining exactly what managers cover · termination authority when the BM is out — not a new gap, existing coverage structure applies · the coaching-redirect mechanism — already exists (a Monday board); if managers aren't logging redirects, that's a leadership/adoption issue, not a process gap.
+  </div>
+
+  <h3 class="q-owner">Anne — process decisions</h3>
+  <div class="q-list">
+    <div class="q-item"><div class="q-num">1</div><div class="q-text"><strong>SLA socialization.</strong> Jalissa's Recruiting SLA Framework was published 7/30 but still hasn't been socialized to the 10 BMs. Target: start of next month.</div></div>
+    <div class="q-item"><div class="q-num">2</div><div class="q-text"><strong>Day-one presentation content.</strong> The 60-day eval walkthrough, the four measured criteria, and the CHOICES values walk don't exist as an actual presentation yet — a few hours of work, not a structural gap.</div></div>
+    <div class="q-item"><div class="q-num">3</div><div class="q-text"><strong>Mixed-signals framework — needs documenting, not deciding.</strong> The real judgment criteria already exist: has the manager held up their end (clear expectations, consistent check-ins, feedback on flagged struggle areas) vs. clear-cut employee signals (attendance issues, bad attitude, an unremorseful damage with no hustle to improve → cut). Just needs to be written down somewhere real.</div></div>
+    <div class="q-item"><div class="q-num">4</div><div class="q-text"><strong>In-flight candidates.</strong> Anyone mid-pipeline with a trial day already booked when this flips.</div></div>
+    <div class="q-item"><div class="q-num">5</div><div class="q-text"><strong>Is there actually a 100-point framework?</strong> The real instruments in use are CHOICES on a 5/3/1 tally, Get It / Want It / Can Do It, and +/− competency ratings — worth confirming this isn't getting conflated with the separate 100-Point Behavioral System rock (targeted Jan 1, 2027).</div></div>
+  </div>
+
+  <h3 class="q-owner">Anne + Mike + Brian — first shifts</h3>
+  <div class="q-list">
+    <div class="q-item"><div class="q-num">6</div><div class="q-text"><strong>First-shift structure</strong> (free third vs. 3+ man only, FM field day vs. straight to a crew, restriction duration and whether EMMA can actually enforce it). Needs Mike + Brian's call, plus branch leadership buy-in — onboarding at a 1-manager branch and a 3-manager branch needs a different outline, scaled by branch size.</div></div>
+  </div>
+
+  <h3 class="q-owner">Branch Managers — lead pairing</h3>
+  <div class="q-list">
+    <div class="q-item"><div class="q-num">7</div><div class="q-text"><strong>Pairing a new hire with a strong lead, deliberately.</strong> On branch managers to be proactive about scheduling and prepping the lead on their role — not an EE build.</div></div>
+  </div>
+
+  <h3 class="q-owner">Matisen — system questions</h3>
+  <div class="q-list">
+    <div class="q-item"><div class="q-num">8</div><div class="q-text">Can an RM see check-in completion across a branch, or only a manager their own?</div></div>
+    <div class="q-item"><div class="q-num">9</div><div class="q-text">Can a manager log an ad-hoc note outside the four scheduled check-ins?</div></div>
+    <div class="q-item"><div class="q-num">10</div><div class="q-text">Can the mover's half and the manager's half of a check-in be completed separately, by two people, at two times? <em>(confirmed genuinely unknown, even to Anne)</em></div></div>
+    <div class="q-item"><div class="q-num">11</div><div class="q-text">Does the mover get their own reminder, or only the manager?</div></div>
+  </div>
+
+  <h3 class="q-owner">Brian — operational ownership</h3>
+  <div class="q-list">
+    <div class="q-item"><div class="q-num">12</div><div class="q-text"><strong>Pilot.</strong> One branch, one hire, end to end before the other branches hire under it. Leander is the candidate — Frank and Garrison already ran the culture interview.</div></div>
+    <div class="q-item"><div class="q-num">13</div><div class="q-text"><strong>Weekly verification rhythm.</strong> Every hire inside their 60 days, by name, plus anyone whose 14-day window closes within seven days.</div></div>
+    <div class="q-item"><div class="q-num">14</div><div class="q-text"><strong>Playbook hold.</strong> The manager playbook waits until day-one presentation content (above) is finalized.</div></div>
+  </div>
+
+
+  <footer>
+    Trial Day Sunset · Project HQ · maintained by Linda (Anne's AI Chief of Staff) · last updated 8/28/2026 ·
+    sources: Anne's leadership comparison page, Brian's 55-step gap analysis (built with Vera), Roundtable
+    huddle notes from 8/27 · internal use — do not share outside Einstein without Anne's OK
+  </footer>
+
+</div>
+</body>
+</html>
